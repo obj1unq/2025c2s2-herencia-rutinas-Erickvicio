@@ -6,44 +6,52 @@ describe "rutinas" {
 	const correrEnLaPlaya = new Running(intensidad = 1.2)
 	const remarEnElDelta = new Remo()
 	const remarEnCaminoRemeros = new Remo_Competicion()
-	const maratonBA = new Maraton()
-
+	const maratonBA = new Maraton(intensidad = 1.5)
+/*
 //Punto 2: personas
 	const calamardo = new Persona_Sedentaria(peso = 60,tiempoDeEjercicio = 5)
- 	const bob =  new Persona_Atetlas(peso = 40) 
+ 	const bob =  new Persona_Atleta(peso = 40) 
 
 //Punto 3: clubes
 	const recreo = new Predio(rutinas = [correrEnLaPlaya, maratonBA])
 	const nautico = new Predio(rutinas = [remarEnElDelta,remarEnCaminoRemeros])
 	const clubBarrial = new Club(predios = [recreo, nautico])
-
+*/
 // PUNTO 1
 	test "1.1 consulta running" {
 		//correrEnLaPlaya deberia gastar 360 calorias al practicarse por 5 minutos
-		assert.equals(360, correrEnLaPlaya.caloriasQuemadasEn(5))
+		correrEnLaPlaya.tiempo(5)
+		assert.equals(360, correrEnLaPlaya.caloriasQuemadas())
 		//correrEnLaPlaya deberia gastar 10200 calorias al practicarse por 90 minutos
-		assert.equals(10200, correrEnLaPlaya.caloriasQuemadasEn(90))
+		correrEnLaPlaya.tiempo(90)	
+		assert.equals(10200, correrEnLaPlaya.caloriasQuemadas())
 	}
 
 	test "1.2 consulta maraton" {
 		//maratonBA deberia gastar 900 calorias al practicarse por 5 minutos
-		assert.equals(900, maratonBA.caloriasQuemadasEn(5))
+		maratonBA.tiempo(5)
+		assert.equals(900, maratonBA.caloriasQuemadas())
 		//maratonBA deberia gastar 25500 calorias al practicarse por 90 minutos
-		assert.equals(25500, maratonBA.caloriasQuemadasEn(90))
+		maratonBA.tiempo(90)
+		assert.equals(25500, maratonBA.caloriasQuemadas())
 	}
 
 	test "1.3 consulta remo" {
 		//remarEnElDelta deberia gastar 520 calorias al practicarse por 5 minutos
-		assert.equals(520, remarEnElDelta.caloriasQuemadasEn(5)) 
+		remarEnElDelta.tiempo(5)
+		assert.equals(520, remarEnElDelta.caloriasQuemadas()) 
 		//remarEnElDelta deberia gastar 9360 calorias al practicarse por 90 minutos
-		assert.equals(9360, remarEnCaminoRemeros.caloriasQuemadasEn(90))
+		remarEnElDelta.tiempo(90)
+		assert.equals(9360, remarEnElDelta.caloriasQuemadas())
 	}
 
 	test "1.4 consulta remo competitivo" {
 		//remarEnCaminoRemeros deberia gastar 510 calorias al practicarse por 5 minutos
-		assert.equals(510, remarEnCaminoRemeros.caloriasQuemadasEn(5))
+		remarEnCaminoRemeros.tiempo(5)
+		assert.equals(510, remarEnCaminoRemeros.caloriasQuemadas())
 		//remarEnCaminoRemeros deberia gastar 12750 calorias al practicarse por 90 minutos
-		assert.equals(12750, remarEnCaminoRemeros.caloriasQuemadasEn(90))
+		remarEnCaminoRemeros.tiempo(90)
+		assert.equals(12750, remarEnCaminoRemeros.caloriasQuemadas())
 	}
 
 //Punto 2: Personas
